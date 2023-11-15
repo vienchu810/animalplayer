@@ -24,6 +24,8 @@ public class MemoryGame : MonoBehaviour
     public SpriteRenderer image2;
 
     private bool isFlipped = false;
+
+     private bool isHandlingImage1 = false;
     
  
 
@@ -60,6 +62,8 @@ public class MemoryGame : MonoBehaviour
                     {
                         // Xoay chỉ ảnh được chọn
                         StartCoroutine(FlipImage(selectedTile));
+                                UnityEngine.Debug.LogError("Update sortingOrder: " + selectedTile.GetComponent<SpriteRenderer>().sortingOrder);
+
                     }
 
                     if (selectedTiles.Count == 2)
@@ -93,7 +97,7 @@ public class MemoryGame : MonoBehaviour
     }
  IEnumerator FlipImage(GameObject tile)
     {
-        float duration = 0.5f;
+       float duration = 0.5f;
         float elapsed = 0f;
 
         Vector3 startRotation = tile.transform.rotation.eulerAngles;
@@ -106,14 +110,15 @@ public class MemoryGame : MonoBehaviour
             yield return null;
         }
 
-        // Đảo ngược orderLayer để ảnh 2 lên trước ảnh 1
-        tile.GetComponent<SpriteRenderer>().sortingOrder = isFlipped ? 1 : 2;
-
-        isFlipped = !isFlipped; // Đảo ngược trạng thái của isFlipped
+        // Đảo ngược orderLayer để cả hai ảnh đều có sortingOrder là 1
+        tile.GetComponent<SpriteRenderer>().sortingOrder = 1;
+        UnityEngine.Debug.LogError("sortingOrder  " + tile.GetComponent<SpriteRenderer>().sortingOrder);
+        
+        isHandlingImage1 = !isHandlingImage1; // Đảo ngược trạng thái của isFlipped
     }
     IEnumerator CheckMatchingImages()
     {
-        isCheckingMatch = true;
+       isCheckingMatch = true;
         yield return new WaitForSeconds(1.0f);
 
         SpriteRenderer firstSpriteRenderer = selectedTiles[0].GetComponent<SpriteRenderer>();
@@ -128,16 +133,25 @@ public class MemoryGame : MonoBehaviour
         }
         else
         {
-            
-            // firstSpriteRenderer.sortingOrder = 2;
-            // secondSpriteRenderer.sortingOrder = 2;
+            // Xác định xem đang xử lý ảnh 1 hay ảnh 2 để cập nhật sortingOrder
+            if (isHandlingImage1)
+            {
+                firstSpriteRenderer.sortingOrder = 1;
+                secondSpriteRenderer.sortingOrder = 2;
+            }
+            else
+            {
+                firstSpriteRenderer.sortingOrder = 2;
+                secondSpriteRenderer.sortingOrder = 1;
+            }
 
-             StartCoroutine(FlipImage(selectedTiles[0]));
-             StartCoroutine(FlipImage(selectedTiles[1]));
+            StartCoroutine(FlipImage(selectedTiles[0]));
+            StartCoroutine(FlipImage(selectedTiles[1]));
         }
 
         isCheckingMatch = false;
         selectedTiles.Clear();
+    
     }
 
     void ShuffleAndSelectImages()
