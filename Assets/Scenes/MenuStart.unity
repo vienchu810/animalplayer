@@ -149,8 +149,8 @@ Transform:
   m_GameObject: {fileID: 215314652}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 44.7, y: 96.7, z: -3069.0002}
-  m_LocalScale: {x: 54.78479, y: 61.76267, z: 34.100002}
+  m_LocalPosition: {x: 163.52, y: 312.74, z: -3069.0002}
+  m_LocalScale: {x: 176.57684, y: 203.54506, z: 34.100002}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1729202631}
@@ -236,6 +236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 898a4103f95c41c4dbe4f80d67fa11cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DialogPrefab: {fileID: 0}
   sceneName: Map1
 --- !u!4 &317426563
 Transform:
@@ -380,8 +381,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -278.8, y: 144.4}
-  m_SizeDelta: {x: 33.85, y: 31.74}
+  m_AnchoredPosition: {x: -880.36, y: 470.31}
+  m_SizeDelta: {x: 109.23, y: 104.85}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1028961619
 MonoBehaviour:
@@ -760,8 +761,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 105.71, y: -129.63}
-  m_SizeDelta: {x: 110.41, y: 43.92}
+  m_AnchoredPosition: {x: 360.39, y: -434.92}
+  m_SizeDelta: {x: 356.28, y: 145.09}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1884317419
 MonoBehaviour:
